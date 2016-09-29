@@ -27,7 +27,7 @@
 	}
 	function doT(){
 		isOn = !isOn;
-		b('X: ' + ax + ' g<br>Y: ' + ay + ' g<br>Z: ' + az + ' g<br>X(exclude g): ' + bx + ' g<br>Y(exclude g): ' + by + ' g<br>Z(exclude g): ' + bz + ' g<br>rate α: ' + al + '°<br>rate β: ' + bt + '°<br>rate γ: ' + gm + '°<br>α: ' + gal + '°<br>β: ' + gbt + '°<br>γ: ' + ggm + '°<br>North: ' + north + '°<br>abs Ax: ' + cx + '<br>abs Ay: ' + cy + '<br>abs Az: ' + cz + '<br>' + cosA + '<br>' + cosB + '<br>' + cosC + '<br>' + sinA + '<br>' + sinB + '<br>' + sinC);
+		b('X: ' + ax + ' g<br>Y: ' + ay + ' g<br>Z: ' + az + ' g<br>X(exclude g): ' + bx + ' g<br>Y(exclude g): ' + by + ' g<br>Z(exclude g): ' + bz + ' g<br>rate α: ' + al + '°<br>rate β: ' + bt + '°<br>rate γ: ' + gm + '°<br>α: ' + gal + '°<br>β: ' + gbt + '°<br>γ: ' + ggm + '°<br>North: ' + north + '°<br>abs Ax: ' + cx + '<br>abs Ay: ' + cy + '<br>abs Az: ' + cz + '<br>');
 		setTimeout(doT, 200);
 	}
 	if (window.DeviceMotionEvent != undefined) {
@@ -42,12 +42,12 @@
 				al = Math.round(e.rotationRate.alpha*100)/100;
 				bt = Math.round(e.rotationRate.beta*100)/100;
 				gm = Math.round(e.rotationRate.gamma*100)/100;
-				cosA = Math.cos(gal/180*Math.PI);
-				cosB = Math.cos(gbt/180*Math.PI);
-				cosC = Math.cos(ggm/180*Math.PI);
-				sinA = Math.sin(gal/180*Math.PI);
-				sinB = Math.sin(gbt/180*Math.PI);
-				sinC = Math.sin(ggm/180*Math.PI);
+				// cosA = Math.cos(gal/180*Math.PI);
+				// cosB = Math.cos(gbt/180*Math.PI);
+				// cosC = Math.cos(ggm/180*Math.PI);
+				// sinA = Math.sin(gal/180*Math.PI);
+				// sinB = Math.sin(gbt/180*Math.PI);
+				// sinC = Math.sin(ggm/180*Math.PI);
 				// cx = e.accelerationIncludingGravity.x*cosA*cosC - e.accelerationIncludingGravity.y*sinA*cosC + e.accelerationIncludingGravity.z*sinC*cosA;
 				// cy = e.accelerationIncludingGravity.y*cosB*cosA - e.accelerationIncludingGravity.z*sinB*cosA + e.accelerationIncludingGravity.x*sinA*cosB;
 				// cz = e.accelerationIncludingGravity.z*cosC*cosB - e.accelerationIncludingGravity.x*sinC*cosB + e.accelerationIncludingGravity.y*sinB*cosC;
