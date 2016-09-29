@@ -53,12 +53,12 @@
 				// cz = e.accelerationIncludingGravity.z*cosC*cosB - e.accelerationIncludingGravity.x*sinC*cosB + e.accelerationIncludingGravity.y*sinB*cosC;
 			}
 			//-----
-			Cz = Math.cos(gal);
-			Cx = Math.cos(gbt);
-			Cy = Math.cos(ggm);
-			Sz = Math.sin(gal);
-			Sx = Math.sin(gbt);
-			Sy = Math.sin(ggm);
+			Cz = Math.cos(gal/180*Math.PI);
+			Cx = Math.cos(gbt/180*Math.PI);
+			Cy = Math.cos(ggm/180*Math.PI);
+			Sz = Math.sin(gal/180*Math.PI);
+			Sx = Math.sin(gbt/180*Math.PI);
+			Sy = Math.sin(ggm/180*Math.PI);
 
 			cx = Cy*Cz-Sx*Sy*Sz - Cx*Sz + Cz*Sy+Cy*Sx*Sz;
 	        cy = Cz*Sx*Sy+Cy*Sz + Cx*Cz - Cy*Cz*Sx+Sy*Sz;
