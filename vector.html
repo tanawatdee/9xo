@@ -60,9 +60,9 @@
 			Sx = Math.sin(gbt/180*Math.PI);
 			Sy = Math.sin(ggm/180*Math.PI);
 
-			cx = e.accelerationIncludingGravity.x*Cy*Cz-Sx*Sy*Sz - e.accelerationIncludingGravity.y*Cx*Sz + accelerationIncludingGravity.z*Cz*Sy+Cy*Sx*Sz;
-	        cy = e.accelerationIncludingGravity.x*Cz*Sx*Sy+Cy*Sz + e.accelerationIncludingGravity.y*Cx*Cz - accelerationIncludingGravity.z*Cy*Cz*Sx+Sy*Sz;
-	        cz = -e.accelerationIncludingGravity.x*Cx*Sy + e.accelerationIncludingGravity.y*Sx + accelerationIncludingGravity.z*Cx*Cy;
+			cx = e.accelerationIncludingGravity.x*Cy*Cz-Sx*Sy*Sz - e.accelerationIncludingGravity.y*Cx*Sz + e.accelerationIncludingGravity.z*Cz*Sy+Cy*Sx*Sz;
+	        cy = e.accelerationIncludingGravity.x*Cz*Sx*Sy+Cy*Sz + e.accelerationIncludingGravity.y*Cx*Cz - e.accelerationIncludingGravity.z*Cy*Cz*Sx+Sy*Sz;
+	        cz = -e.accelerationIncludingGravity.x*Cx*Sy + e.accelerationIncludingGravity.y*Sx + e.accelerationIncludingGravity.z*Cx*Cy;
 			//#####
 
 		}
