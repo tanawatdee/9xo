@@ -1,0 +1,16 @@
+<div id="divMain" style="display:none;">
+	<a href="https://googledrive.com/host/0B3QDa1sWBqDpckRVV0RQZ3hfdWM/compass.html">demo</a>
+	<a href="https://googledrive.com/host/0B3QDa1sWBqDpckRVV0RQZ3hfdWM/timer.html">api</a>
+</div>
+<script>
+(function(divMain){
+	var a = document.createElement('a');
+	a.target = '_parent';
+	a.href = window.location.href;
+	try {
+        window.self !== window.top?a.click():(document.getElementById(divMain).style.display = 'block');
+    } catch (e) {
+        a.click();
+    }
+})("divMain");
+</script>
