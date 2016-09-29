@@ -1,0 +1,84 @@
+<meta charset="utf-8">
+<div id="divMain" style="display:none;">	
+	<button id="b1" onclick="doT();" style="display:none;">click</button>
+	<p id="p1"></p>
+</div>
+<script>
+(function(divMain){
+	var a = document.createElement('a');
+	a.target = '_parent';
+	a.href = window.location.href;
+	try {
+        window.self !== window.top?a.click():(document.getElementById(divMain).style.display = 'block');
+    } catch (e) {
+        a.click();
+    }
+})("divMain");
+</script>
+<script type="text/javascript">
+	var isOn = true, t = (new Date()).getTime();
+	var gal, gbt, ggm, ax, ay, az, bx, by, bz, cx, cy, cz, al, bt, gm, north, cosA, cosB, cosC, sinA, sinB, sinC;
+	var distance = 0, velocity = 0;
+	//-----
+	var Cx, Cy, Cz, Sx, Sy, Sz;
+	//#####
+	function b(s){
+		document.getElementById('p1').innerHTML = s+'<br>';
+	}
+	function doT(){
+		isOn = !isOn;
+		b('X: ' + ax + ' g<br>Y: ' + ay + ' g<br>Z: ' + az + ' g<br>X(exclude g): ' + bx + ' g<br>Y(exclude g): ' + by + ' g<br>Z(exclude g): ' + bz + ' g<br>rate α: ' + al + '°<br>rate β: ' + bt + '°<br>rate γ: ' + gm + '°<br>α: ' + gal + '°<br>β: ' + gbt + '°<br>γ: ' + ggm + '°<br>North: ' + north + '°<br>abs Ax: ' + cx + '<br>abs Ay: ' + cy + '<br>abs Az: ' + cz + '<br>' + cosA + '<br>' + cosB + '<br>' + cosC + '<br>' + sinA + '<br>' + sinB + '<br>' + sinC);
+		setTimeout(doT, 200);
+	}
+	if (window.DeviceMotionEvent != undefined) {
+		window.ondevicemotion = function(e) {
+			ax = Math.round(e.accelerationIncludingGravity.x/0.0981)/100;
+			ay = Math.round(e.accelerationIncludingGravity.y/0.0981)/100;
+			az = Math.round(e.accelerationIncludingGravity.z/0.0981)/100;
+			bx = Math.round(e.acceleration.x/0.0981)/100;
+			by = Math.round(e.acceleration.y/0.0981)/100;
+			bz = Math.round(e.acceleration.z/0.0981)/100;
+			if ( e.rotationRate ) {
+				al = Math.round(e.rotationRate.alpha*100)/100;
+				bt = Math.round(e.rotationRate.beta*100)/100;
+				gm = Math.round(e.rotationRate.gamma*100)/100;
+				cosA = Math.cos(gal/180*Math.PI);
+				cosB = Math.cos(gbt/180*Math.PI);
+				cosC = Math.cos(ggm/180*Math.PI);
+				sinA = Math.sin(gal/180*Math.PI);
+				sinB = Math.sin(gbt/180*Math.PI);
+				sinC = Math.sin(ggm/180*Math.PI);
+				// cx = e.accelerationIncludingGravity.x*cosA*cosC - e.accelerationIncludingGravity.y*sinA*cosC + e.accelerationIncludingGravity.z*sinC*cosA;
+				// cy = e.accelerationIncludingGravity.y*cosB*cosA - e.accelerationIncludingGravity.z*sinB*cosA + e.accelerationIncludingGravity.x*sinA*cosB;
+				// cz = e.accelerationIncludingGravity.z*cosC*cosB - e.accelerationIncludingGravity.x*sinC*cosB + e.accelerationIncludingGravity.y*sinB*cosC;
+			}
+			//-----
+			Cz = Math.cos(gal);
+			Cx = Math.cos(gbt);
+			Cy = Math.cos(ggm);
+			Sz = Math.sin(gal);
+			Sx = Math.sin(gbt);
+			Sy = Math.sin(ggm);
+
+			cx = Cy*Cz-Sx*Sy*Sz - Cx*Sz + Cz*Sy+Cy*Sx*Sz;
+	        cy = Cz*Sx*Sy+Cy*Sz + Cx*Cz - Cy*Cz*Sx+Sy*Sz;
+	        cz = -Cx*Sy + Sx + Cx*Cy;
+			//#####
+
+		}
+		//------
+		Cx = Math.cos(e.accelerationIncludingGravity.x);
+		//#####
+	}
+	if (window.DeviceOrientationEvent != undefined) {
+		window.ondeviceorientation = function(e) {
+			gal = Math.round(e.alpha*100)/100;
+			gbt = Math.round(e.beta*100)/100;
+			ggm = Math.round(e.gamma*100)/100;
+			north = Math.round(e.webkitCompassHeading*100)/100;
+			//-----
+			//#####
+		}
+	}
+	doT();
+</script>
